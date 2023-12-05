@@ -27,6 +27,6 @@ class Product
 //prende id titolo, long description, authors
 //name, app id percorso, path immagini cdn bla bla bla/app_id/header.jpg
 // preparare una navbar per pagina index;
-//prodact è la classe padre di tutti;
+//product è la classe padre di tutti;
 //creare classe books e classe steam
 ?>
