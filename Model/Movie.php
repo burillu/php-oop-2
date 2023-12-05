@@ -54,14 +54,10 @@ class Movie extends Product
         //$lang = $this->original_language;
         include __DIR__ . "/Card.php";
     }
-}
-
-
-
-
-$movie_string = file_get_contents(__DIR__ . '/movie_db.json');
+    public static function fetch_all(){
+        $movie_string = file_get_contents(__DIR__ . '/movie_db.json');
 $movieList = json_decode($movie_string, true);
-
+$genres= Genre::fetch_all();
 $movies = [];
 foreach ($movieList as $movie) {
     $genre_array=[];
@@ -71,6 +67,14 @@ foreach ($movieList as $movie) {
     }
     $movies[] = new Movie($movie['id'], $movie['title'], $movie['overview'], $movie['vote_average'], $movie['release_date'], $movie['poster_path'], $movie['original_language'], $genre_array, 25.00, 44);
 }
+return $movies;
+    }
+}
+
+
+
+
+
 //var_dump($movies);
 
 //echo $movies[0]->printStars();

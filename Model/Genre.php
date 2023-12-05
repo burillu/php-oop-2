@@ -13,14 +13,19 @@ class Genre
         include __DIR__ . "/../Views/genre_template.php";
         return $template;
     }
+    public static function fetch_all()
+    {
+        $genre_string = file_get_contents(__DIR__ . '/genre_db.json');
+        $genre_list = json_decode($genre_string, true);
+        $genres = [];
+        foreach ($genre_list as $genre) {
+            $genres[] = new Genre($genre);
+        }
+        return $genres;
+    }
 }
 
-$genre_string = file_get_contents(__DIR__ . '/genre_db.json');
-$genre_list = json_decode($genre_string, true);
-$genres = [];
-foreach ($genre_list as $genre) {
-    $genres[] = new Genre($genre);
-}
+
 //var_dump($genres);
 
 
