@@ -5,3 +5,11 @@
 .icon-flag>img {
     width: 100%;
 }
+
+img#img-logo {
+    width: 100px;
+}
+
+/* .card>img {
+    height: 388px;
+} */
