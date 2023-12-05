@@ -7,7 +7,11 @@ $books = Book::fetch_all();
 
 <div class="container">
     <div class="row">
-
+        <?php
+        foreach ($books as $book) {
+            $book->printCard();
+        }
+        ?>
     </div>
 
 </div>

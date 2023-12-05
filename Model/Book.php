@@ -21,6 +21,18 @@ class Book extends Product
         $this->longDescription = $longDescription;
         $this->categories = $categories;
     }
+    public function printCard()
+    {
+        $image = $this->thumbnailUrl;
+        $title = $this->title;
+        $content = $this->longDescription;
+        $custom = 'Pages: ' . $this->pageCount;
+        $genre = $this->categories;
+        $custom2 = '';
+        $price = $this->price;
+        $quantity = $this->quantity;
+        include __DIR__ . '/Card.php';
+    }
 
     public static function fetch_all()
     {
