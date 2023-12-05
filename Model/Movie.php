@@ -29,13 +29,14 @@ class Movie extends Product
 
     public function printStars()
     {
+        $template='';
         $vote = ceil($this->vote_average / 2);
         include __DIR__ . "/Vote.php";
         return $template;
     }
     public function printFlags()
     {
-        
+        $template='';
         $flag_file = $this->original_language . ".svg";
         $flags_list = scandir(__DIR__ . "/../img/flags");
         if (!array_search($flag_file, $flags_list)) {
@@ -47,11 +48,12 @@ class Movie extends Product
     public function printCard()
     {
         //$sconto = $this->set_discount($this->title);
+        
         $price= $this->price;
         $quantity=$this->quantity;
         $genre = $this->genre;
         $image = $this->poster_path;
-        $title = $this->title;
+        $title = substr($this->title, 0, 25) . '...';
         $custom2 = $this->printFlags();
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->printStars();
@@ -60,16 +62,19 @@ class Movie extends Product
     }
     public static function fetch_all(){
         $movie_string = file_get_contents(__DIR__ . '/movie_db.json');
-$movieList = json_decode($movie_string, true);
-$genres= Genre::fetch_all();
-$movies = [];
-foreach ($movieList as $movie) {
+        $movieList = json_decode($movie_string, true);
+        $genres= Genre::fetch_all();
+        $movies = [];
+        foreach ($movieList as $movie) {
     $quantity= rand(2,45);
     $price= rand(4.99, 49.99);
     $genre_array=[];
-    foreach($movie['genre_ids'] as $genre_id) {
+    while (count ($genre_array) < count($movie['genre_ids']) ) {
         $index= rand(0,count($genres)-1);
-        $genre_array[]=$genres[$index];
+        if (!in_array($genres[$index],$genre_array)){
+             $genre_array[]=$genres[$index];
+        }
+       
     }
     $movies[] = new Movie($movie['id'], $movie['title'], $movie['overview'], $movie['vote_average'], $movie['release_date'], $movie['poster_path'], $movie['original_language'], $genre_array, $price, $quantity);
 }

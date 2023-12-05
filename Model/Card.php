@@ -22,7 +22,7 @@
                 </div>
                 <?= $custom2 ?>
                 <div>Price:
-                    <?= $price . ' $' ?>
+                    <?= ' $ ' . $price ?>
                 </div>
                 <div>Quantity:
                     <?= $quantity ?>
