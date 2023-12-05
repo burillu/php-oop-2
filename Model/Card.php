@@ -30,6 +30,12 @@
                     </div>
 
                 </div>
+                <div>Price:
+                    <?= $price . ' $' ?>
+                </div>
+                <div>Quantity:
+                    <?= $quantity ?>
+                </div>
 
             </div>
 

@@ -45,6 +45,8 @@ class Movie extends Product
     public function printCard()
     {
         //$sconto = $this->set_discount($this->title);
+        $price= $this->price;
+        $quantity=$this->quantity;
         $genre = $this->genre;
         $image = $this->poster_path;
         $title = $this->title;
@@ -60,12 +62,14 @@ $movieList = json_decode($movie_string, true);
 $genres= Genre::fetch_all();
 $movies = [];
 foreach ($movieList as $movie) {
+    $quantity= rand(2,45);
+    $price= rand(4.99, 49.99);
     $genre_array=[];
     foreach($movie['genre_ids'] as $genre_id) {
         $index= rand(0,count($genres)-1);
         $genre_array[]=$genres[$index];
     }
-    $movies[] = new Movie($movie['id'], $movie['title'], $movie['overview'], $movie['vote_average'], $movie['release_date'], $movie['poster_path'], $movie['original_language'], $genre_array, 25.00, 44);
+    $movies[] = new Movie($movie['id'], $movie['title'], $movie['overview'], $movie['vote_average'], $movie['release_date'], $movie['poster_path'], $movie['original_language'], $genre_array, $price, $quantity);
 }
 return $movies;
     }
