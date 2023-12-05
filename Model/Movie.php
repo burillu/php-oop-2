@@ -45,13 +45,20 @@ class Movie extends Product
         include __DIR__.'/../Views/flags_template.php';
         return $template;
     }
+    public function get_genres_name(){
+        $genres_name=[];
+        foreach ($this->genre as $genre) {
+            $genres_name[] = $genre->name;
+        }
+        return $genres_name;
+    }
     public function printCard()
     {
         //$sconto = $this->set_discount($this->title);
         
         $price= $this->price;
         $quantity=$this->quantity;
-        $genre = $this->genre;
+        $genre = $this->get_genres_name();
         $image = $this->poster_path;
         $title = substr($this->title, 0, 25) . '...';
         $custom2 = $this->printFlags();

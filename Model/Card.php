@@ -17,7 +17,7 @@
                 <div>
                     genre:
                     <?php foreach ($genre as $item) {
-                        echo $item->name . ', ';
+                        echo $item . ', ';
                     } ?>
                 </div>
                 <?= $custom2 ?>
