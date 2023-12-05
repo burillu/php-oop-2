@@ -20,16 +20,7 @@
                         echo $item->name . ', ';
                     } ?>
                 </div>
-                <div class="d-flex">
-                    <span>
-                        original language :
-                    </span>
-                    <div class="icon-flag">
-
-                        <img src="<?php echo "img/flags/$flag_file" ?>" alt="<?php echo "$flag_file flag" ?>">
-                    </div>
-
-                </div>
+                <?= $custom2 ?>
                 <div>Price:
                     <?= $price . ' $' ?>
                 </div>

@@ -35,12 +35,14 @@ class Movie extends Product
     }
     public function printFlags()
     {
+        
         $flag_file = $this->original_language . ".svg";
         $flags_list = scandir(__DIR__ . "/../img/flags");
         if (!array_search($flag_file, $flags_list)) {
             $flag_file = 'default-lang.png';
         }
-        return $flag_file;
+        include __DIR__.'/../Views/flags_template.php';
+        return $template;
     }
     public function printCard()
     {
@@ -50,7 +52,7 @@ class Movie extends Product
         $genre = $this->genre;
         $image = $this->poster_path;
         $title = $this->title;
-        $flag_file = $this->printFlags();
+        $custom2 = $this->printFlags();
         $content = substr($this->overview, 0, 100) . '...';
         $custom = $this->printStars();
         //$lang = $this->original_language;
