@@ -20,7 +20,10 @@
                         echo $item . ', ';
                     } ?>
                 </div>
-                <?= $custom2 ?>
+                <div>
+                    <?= $custom2 ?>
+                </div>
+
                 <div>Price:
                     <?= ' $ ' . $price ?>
                 </div>

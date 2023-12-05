@@ -21,6 +21,12 @@ class Book extends Product
         $this->longDescription = $longDescription;
         $this->categories = $categories;
     }
+    public function get_authors()
+    {
+        $template = '';
+        include __DIR__ . '/../Views/author_template.php';
+        return $template;
+    }
     public function printCard()
     {
         $image = $this->thumbnailUrl;
@@ -28,7 +34,7 @@ class Book extends Product
         $content = substr($this->longDescription, 0, 50) . '...';
         $custom = 'Pages: ' . $this->pageCount;
         $genre = $this->categories;
-        $custom2 = '';
+        $custom2 = $this->get_authors();
         $price = $this->price;
         $quantity = $this->quantity;
         include __DIR__ . '/Card.php';
