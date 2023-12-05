@@ -10,7 +10,7 @@ class Genre
     public function printGenre()
     {
         $genre = $this->name;
-        include __DIR__ . "/../partials/genre_template.php";
+        include __DIR__ . "/../Views/genre_template.php";
         return $template;
     }
 }

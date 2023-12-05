@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/partials/header.php";
+include __DIR__ . "/Views/header.php";
 include __DIR__ . "/Model/Movie.php";
 
 ?>
@@ -15,5 +15,5 @@ include __DIR__ . "/Model/Movie.php";
 </div>
 
 <?php
-include __DIR__ . "/partials/footer.php";
+include __DIR__ . "/Views/footer.php";
 ?>
