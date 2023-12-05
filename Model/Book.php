@@ -5,7 +5,7 @@ class Book extends Product
     private int $id;
     private string $title;
     private int $pageCount;
-    private string $thumbnailUrl;
+    private string $thumbnailUrl = 'https://media.wired.com/photos/5a0201b14834c514857a7ed7/master/pass/1217-WI-APHIST-01.jpg';
     private array $authors;
     private string $longDescription;
     private array $categories;
@@ -16,7 +16,7 @@ class Book extends Product
         $this->id = $id;
         $this->title = $title;
         $this->pageCount = $pageCount;
-        $this->thumbnailUrl = $thumbnailUrl;
+        $this->thumbnailUrl = (filter_var($thumbnailUrl, FILTER_VALIDATE_URL)) ? $thumbnailUrl : 'https://media.wired.com/photos/5a0201b14834c514857a7ed7/master/pass/1217-WI-APHIST-01.jpg';
         $this->authors = $authors;
         $this->longDescription = $longDescription;
         $this->categories = $categories;
@@ -25,7 +25,7 @@ class Book extends Product
     {
         $image = $this->thumbnailUrl;
         $title = $this->title;
-        $content = $this->longDescription;
+        $content = substr($this->longDescription, 0, 50) . '...';
         $custom = 'Pages: ' . $this->pageCount;
         $genre = $this->categories;
         $custom2 = '';
