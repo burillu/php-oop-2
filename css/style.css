@@ -10,6 +10,8 @@ img#img-logo {
     width: 100px;
 }
 
-/* .card>img {
-    max-height: 388px;
-} */
+.card>img {
+    min-height: 388px;
+    object-fit: contain;
+    background-color: black;
+}

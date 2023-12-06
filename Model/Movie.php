@@ -66,7 +66,7 @@ class Movie extends Product {
             'quantity' => $this->quantity,
             'genre' => $this->get_genres_name(),
             'image' => $this->poster_path,
-            'title' => $this->title,
+            'title' => strlen($this->title) > 20 ? substr($this->title, 0, 20).'...' : $this->title,
             'custom2' => $this->printFlags(),
             'content' => substr($this->overview, 0, 100).'...',
             'custom' => $this->printStars(),
