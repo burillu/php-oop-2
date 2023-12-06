@@ -52,7 +52,16 @@ class Movie extends Product {
     }
     public function formatCard() {
         //$sconto = $this->set_discount($this->title);
+
+        if(str_contains($this->release_date, '1998')) {
+            try {
+                $this->set_sconto(25);
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+            }
+        }
         $array_option = [
+            'error' => $error ?? '',
             'price' => $this->price,
             'quantity' => $this->quantity,
             'genre' => $this->get_genres_name(),
@@ -60,7 +69,8 @@ class Movie extends Product {
             'title' => $this->title,
             'custom2' => $this->printFlags(),
             'content' => substr($this->overview, 0, 100).'...',
-            'custom' => $this->printStars()
+            'custom' => $this->printStars(),
+            'discount' => $this->get_sconto()
         ];
         return $array_option;
         // $price = $this->price;

@@ -1,26 +1,25 @@
 <?php
-class Product
-{
+class Product {
     public float $price;
-    public int $sconto;
+    private int $sconto = 0;
     public int $quantity;
 
-    public function __construct($price, int $quantity)
-    {
+    public function __construct($price, int $quantity) {
         $this->price = $price;
 
         $this->quantity = $quantity;
     }
-    // public function set_discount($title)
-    // {
-    //     if ($title === "Gunfight at Rio Bravo") {
-    //         return $this->sconto = 20;
+    public function set_sconto($discount) {
+        if($discount < 10 || $discount > 80) {
+            throw new Exception("Discount out of range");
 
-    //     } else {
-    //         return $this->sconto;
-    //     }
-
-    // }
+        } else {
+            $this->sconto = $discount;
+        }
+    }
+    public function get_sconto() {
+        return $this->sconto;
+    }
 }
 
 

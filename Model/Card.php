@@ -2,6 +2,12 @@
     <div class="card">
         <img src="<?= $image ?>" class="card-img-top my-ratio" alt="<?= $title ?>">
         <div class="card-body">
+            <?php if(isset($error) && $error) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $error; ?>
+                </div>
+            <?php } ?>
+
             <h5 class="card-title">
                 <?= $title ?>
             </h5>
@@ -16,8 +22,8 @@
                 </div>
                 <div>
                     genre:
-                    <?php foreach ($genre as $item) {
-                        echo $item . ', ';
+                    <?php foreach($genre as $item) {
+                        echo $item.', ';
                     } ?>
                 </div>
                 <div>
@@ -25,8 +31,16 @@
                 </div>
 
                 <div>Price:
-                    <?= ' $ ' . $price ?>
+                    <?= ' $ '.$price ?>
                 </div>
+                <?php if(isset($discount) && $discount) { ?>
+                    <div>
+                        <?php
+                        echo "Discount :$discount %"
+                            ?>
+
+                    </div>
+                <?php } ?>
                 <div>Quantity:
                     <?= $quantity ?>
                 </div>
